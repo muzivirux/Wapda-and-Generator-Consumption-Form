@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wapda Consumption</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css"> -->
+
+    <!-- wapdaAdding -->
+    <script>
+        function calculateTotal(peakFieldId, offPeakFieldId, totalFieldId) {
+            // Get the values of the two input fields
+            var peakValue = parseFloat(document.getElementById(peakFieldId).value);
+            var offPeakValue = parseFloat(document.getElementById(offPeakFieldId).value);
+
+            // Perform the addition
+            var totalValue = peakValue + offPeakValue;
+
+            // Set the result in the total field
+            document.getElementById(totalFieldId).value = totalValue;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Wapda Consumption</h1>
+    <form id="wapdaConsumption">
+        <!-- Wapda -->
+        <div class="sections">
+            <h2>For WAPDA</h1>
+                <label for="RSD">Reading at the start of the Day:</label>
+                <div class="RSD">
+                    <input type="number" required min="0" id="wapdapeak"
+                        name="Wapda Reading start of the Day Peak (KWH)" required placeholder="Please enter Peak (KWH)"
+                        oninput="calculateTotal('wapdapeak', 'wapdaoffpeak', 'wapdatotal')">
+                    <input type="number" required min="0" id="wapdaoffpeak"
+                        name="Wapda Reading start of the Day Off Peak (KWH)" required
+                        placeholder="Please enter Off Peak (KWH)"
+                        oninput="calculateTotal('wapdapeak', 'wapdaoffpeak', 'wapdatotal')">
+                    <input type="number" required min="0" id="wapdatotal"
+                        name="Wapda Reading start of the Day Total (KWH)" required placeholder="Total (KWH)"
+                        tabindex="-1" readonly>
+                </div>
+
+                <label for="RSD">Reading at the End of the Day:</label>
+                <div class="RSD">
+                    <input type="number" required min="0" id="wapdapeakend"
+                        name="Wapda Reading End of the Day Peak (KWH)" required placeholder="Please enter Peak (KWH)"
+                        oninput="calculateTotal('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')">
+                    <input type="number" required min="0" id="wapdaoffpeakend"
+                        name="Wapda Reading End of the Day Off Peak (KWH)" required
+                        placeholder="Please enter Off Peak (KWH)"
+                        oninput="calculateTotal('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')">
+                    <input type="number" required min="0" id="wapdatotalend"
+                        name="Wapda Reading End of the Day Total (KWH)" required placeholder="Total (KWH)" tabindex="-1"
+                        readonly>
+                </div>
+                <div class="RED">
+                    <input type="number" required min="0" id="wapdaused" name="Wapda Total Used (KWH)" required
+                        placeholder="Wapda Total Used (KWH)">
+
+                    <!-- wapda availibility duration time -->
+                    <label>wapda availibility duration time</label>
+                    <input type="time" required min="0" id="wapdaavailibility" name="wapda availibility duration time"
+                        required placeholder="wapda availibility duration time">
+
+                </div>
+                <!-- End of wapda -->
+
+
+                <!-- Generator 1 -->
+                <div class="sections">
+                    <h2>For Generator 1</h1>
+                        <label for="RSD">Reading at the start of the Day:</label>
+                        <div class="RSD">
+                            <input type="text" id="gen1Units" name="Generator 1 Start of the Day UNITS (KWH)" required
+                                placeholder="Please enter Units (KWH)">
+                            <input type="text" id="gen1diesel" name="Generator 1 Start of the Day DIESEL (LTR)" required
+                                placeholder="Please enter Diesel (LTR)">
+                            <input type="text" id="gen1duration" name="Generator 1 Start of the Day DURATION (RHs)"
+                                required placeholder="Please enter Duration (RHs)">
+                        </div>
+
+                        <label for="RSD">Reading at the End of the Day:</label>
+                        <div class="RSD">
+                            <input type="text" id="gen1Units" name="Generator 1 End of the Day UNITS (KWH)" required
+                                placeholder="Please enter Units (KWH)">
+                            <input type="text" id="gen1diesel" name="Generator 1 End of the Day DIESEL (LTR)" required
+                                placeholder="Please enter Diesel (LTR)">
+                            <input type="text" id="gen1duration" name="Generator 1 End of the Day DURATION (RHs)"
+                                required placeholder="Please enter Duration (RHs)">
+                        </div>
+                        <div class="RSD">
+                            <input type="number" required min="0" id="gen1used" name="Generator 1 Total Used (KWH)"
+                                required placeholder="Generator 1 Total Used (KWH)">
+                        </div>
+                        <!-- end of Generator 1 -->
+
+                        <!-- Generator 3 -->
+                        <div class="sections">
+                            <h2>For Generator 3</h1>
+                                <label for="RSD">Reading at the start of the Day:</label>
+                                <div class="RSD">
+                                    <input type="text" id="gen3Units" name="Generator 3 Start of the Day UNITS (KWH)"
+                                        required placeholder="Please enter Units (KWH)">
+                                    <input type="text" id="gen3diesel" name="Generator 3 Start of the Day DIESEL (LTR)"
+                                        required placeholder="Please enter Diesel (LTR)">
+                                    <input type="text" id="gen3duration"
+                                        name="Generator 3 Start of the Day DURATION (RHs)" required
+                                        placeholder="Please enter Duration (RHs)">
+                                </div>
+
+                                <label for="RSD">Reading at the End of the Day:</label>
+                                <div class="RSD">
+                                    <input type="text" id="gen3Units" name="Generator 3 End of the Day UNITS (KWH)"
+                                        required placeholder="Please enter Units (KWH)">
+                                    <input type="text" id="gen3diesel" name="Generator 3 End of the Day DIESEL (LTR)"
+                                        required placeholder="Please enter Diesel (LTR)">
+                                    <input type="text" id="gen3duration"
+                                        name="Generator 3 End of the Day DURATION (RHs)" required
+                                        placeholder="Please enter Duration (RHs)">
+                                </div>
+                                <div class="RSD">
+                                    <input type="number" required min="0" id="gen3used"
+                                        name="Generator 1 Total Used (KWH)" required
+                                        placeholder="Generator 3 Total Used (KWH)">
+                                </div>
+
+                                <!-- End of Generator 3 -->
+                                <div class="sections">
+                                    <label for="poweruseagri">Power use from Agri store</label>
+                                    <input type="number" required min="0" id="powerUseAgri"
+                                        name="Power Use from Agri store" required
+                                        placeholder="Power Use from Agri store">
+                                    <label for="poweruseagri">Running load amp</label>
+                                    <input type="number" required min="0" id="runningLoad" name="Running load amp"
+                                        required placeholder="Running load amp">
+                                </div>
+                                <div class="sections">
+                                    <h2>Submersible Water Turbine</h2>
+                                    <label for="totalrunninghrs">Total running hours/day</label>
+                                    <input type="time" required min="0" id="totalrunninghrs"
+                                        name="Submersible water Turbine Total running hours/day" required>
+
+                                    <label for="Submersibleremarks">Remarks</label>
+                                    <input type="textarea" required id="Submersibleremarks"
+                                        name="Submersible Water Tubine Remarks" required
+                                        placeholder="Submersible Water Turbine remarks">
+                                </div>
+
+                                <div class="sections">
+                                    <h2>Production line Power Consumption</h2>
+                                    <label for="productionline">Total running hours/day</label>
+                                    <input type="time" required id="productiontotalrunninghrs"
+                                        name="Production line Power Consumption Total running hours/day" required>
+
+                                    <label for="productionremarks">Remarks</label>
+                                    <input type="textarea" required id="productionremarks"
+                                        name="Production line Power Consumption remarks" required
+                                        placeholder="Production line Power Consumption remarks">
+                                </div>
+
+                                <div class="sections">
+                                    <h2 class="ohpcfHeading">Over Head Power consumption of factory (Light, fans etc.)
+                                    </h2>
+                                    <label for="ohpcf">Total running hours/day</label>
+                                    <input type="time" required id="ohpcf"
+                                        name="Over Head Power consumption of factory Total running hours/day" required>
+
+                                    <label for="productionremarks">Remarks</label>
+                                    <input type="textarea" required id="ohpcfremarks"
+                                        name="Over Head Power consumption of factory remarks" required
+                                        placeholder="Over Head Power consumption of factory remarks">
+                                </div>
+
+
+                                <input type="submit" value="Submit">
+    </form>
+
+    <!-- spinner html -->
+    <div class="spinner-container">
+        <div class="spinner"></div>
+    </div>
+    <!-- end of spinner html -->
+
+    <!-- Add the modal HTML code -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <button id="closeBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright &copy; <a href="https://rafiqfarmfoods.com/" target="_blank"> Rafiq Farm Foods </a>| All Right
+            Reserved. </p>
+    </footer>
+    <!-- end of Footer -->
+
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwNxKnZn5-XUmXESwR-mz501QDDY81RdHADTu6rP9qi8CYA06yUvfjT4ogrpoeBR-cwRQ/exec';
+        const form = document.getElementById("wapdaConsumption");
+
+        // modal javascript
+        // Get the modal element, the close button, and the close button inside the modal
+        const modal = document.getElementById("myModal");
+        const closeBtn = document.querySelector(".close");
+        const modalCloseBtn = document.getElementById("closeBtn");
+
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            modal.style.display = "block";
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    hideSpinner(); // Hide the spinner
+                    document.getElementById("modal-message").textContent = 'Success!';
+                })
+                .catch(error => {
+                    hideSpinner(); // Hide the spinner
+                    document.getElementById("modal-message").textContent = 'Error! ' + error.message;
+                });
+        });
+        // Close the modal when the close button is clicked
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+        // Close the modal when the close button inside the modal is clicked
+        modalCloseBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+    </script>
+
+    <!-- Location fetching javascript -->
+    <script>
+        function fetchLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        function successCallback(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            document.getElementById('latitude').value = latitude;
+            document.getElementById('longitude').value = longitude;
+        }
+
+        function errorCallback(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("Location permission denied. Please enable location services.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred while getting the location.");
+                    break;
+            }
+
+        }
+    </script>
+    <!-- End of Location fetching javascript -->
+
+    <!-- reseting form after submitting -->
+    <script>
+        document.getElementById('salesSampling').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the form values
+            var resetingForm = document.getElementById('name').value;
+            var email = document.getElementById('streetAddress').value;
+            var email = document.getElementById('state').value;
+            var email = document.getElementById('city').value;
+            var email = document.getElementById('phone').value;
+            var email = document.getElementById('Nearestlandmarks').value;
+            var email = document.getElementById('Shopname').value;
+            var email = document.getElementById('remarks').value;
+            var email = document.getElementById('followupdate').value;
+            var email = document.getElementById('latitude').value;
+            var email = document.getElementById('longitude').value;
+
+            // Perform any additional validation or processing here
+
+
+
+            // Send the form data to the server (you can use AJAX or other techniques)
+
+            // Reset the form fields
+            document.getElementById('name').value = '';
+            document.getElementById('streetAddress').value = '';
+            document.getElementById('state').value = '';
+            document.getElementById('city').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('Nearestlandmarks').value = '';
+            document.getElementById('Shopname').value = '';
+            document.getElementById('remarks').value = '';
+            document.getElementById('followupdate').value = '';
+            document.getElementById('latitude').value = '';
+            document.getElementById('longitude').value = '';
+
+
+        });
+
+    </script>
+
+    <script>
+        // Function to show the spinner
+        function showSpinner() {
+            const spinnerContainer = document.querySelector(".spinner-container");
+            spinnerContainer.style.display = "flex";
+            modal.style.display = "none";
+        }
+
+        // Function to hide the spinner
+        function hideSpinner() {
+            const spinnerContainer = document.querySelector(".spinner-container");
+            spinnerContainer.style.display = "none";
+            modal.style.display = "block";
+        }
+
+        // Function to handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            showSpinner(); // Show the spinner
+
+
+        }
+
+        // Add event listener to form submit
+
+        form.addEventListener("submit", handleSubmit);
+    </script>
+
+    <!-- end of for reseting after submitting -->
+
+
+    <!-- end of spinner -->
+</body>
+
+</html>
