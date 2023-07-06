@@ -37,6 +37,13 @@ label {
   display: block;
   margin-top: 10px;
 }
+input[type="range"] {
+  width: 60%;
+}
+#totalrunningtimeValue {
+  font-size: 4rem;
+}
+
 select,
 input[type="time"],
 input[type="text"],

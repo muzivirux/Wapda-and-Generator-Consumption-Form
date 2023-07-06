@@ -25,7 +25,7 @@
 
 <body>
     <h1>Wapda Consumption</h1>
-    <form id="wapdaConsumption">
+    <form id="WapdaConsumptionForm">
         <!-- Wapda -->
         <div class="sections">
             <h2>For WAPDA</h1>
@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="RSD">
                                     <input type="number" required min="0" id="gen3used"
-                                        name="Generator 1 Total Used (KWH)" required
+                                        name="Generator 3 Total Used (KWH)" required
                                         placeholder="Generator 3 Total Used (KWH)">
                                 </div>
 
@@ -139,9 +139,10 @@
                                 </div>
                                 <div class="sections">
                                     <h2>Submersible Water Turbine</h2>
-                                    <label for="totalrunninghrs">Total running hours/day</label>
-                                    <input type="time" required min="0" id="totalrunninghrs"
-                                        name="Submersible water Turbine Total running hours/day" required>
+                                    <label for="totalrunningtime">Total running time</label>
+                                    <input type="time" id="totalrunningtime"
+                                        name="Submersible water Turbine Total running time" min="0" max="1440" required>
+                                    <span id="totalrunningtimeValue"></span>
 
                                     <label for="Submersibleremarks">Remarks</label>
                                     <input type="textarea" required id="Submersibleremarks"
@@ -202,8 +203,8 @@
 
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwNxKnZn5-XUmXESwR-mz501QDDY81RdHADTu6rP9qi8CYA06yUvfjT4ogrpoeBR-cwRQ/exec';
-        const form = document.getElementById("wapdaConsumption");
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxdO_OMOXbf55O5i66RApxoIGKg1r9O5xsggvdDp_O2rTDunSqC_FsPrWBk24mBQwcjlQ/exec';
+        const form = document.getElementById("WapdaConsumptionForm");
 
         // modal javascript
         // Get the modal element, the close button, and the close button inside the modal
@@ -234,10 +235,24 @@
             modal.style.display = "none";
         });
 
+
+        // range field
+        // var totalrunningtimeInput = document.getElementById("totalrunningtime");
+        // var totalrunningtimeValue = document.getElementById("totalrunningtimeValue");
+
+        // totalrunningtimeInput.addEventListener("input", function () {
+        //     var totalMinutes = parseInt(totalrunningtimeInput.value);
+        //     var hours = Math.floor(totalMinutes / 60);
+        //     var minutes = totalMinutes % 60;
+
+        //     var formattedTime = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
+        //     totalrunningtimeValue.textContent = formattedTime;
+        // });
+
     </script>
 
     <!-- Location fetching javascript -->
-    <script>
+    <!-- <script>
         function fetchLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
@@ -271,46 +286,73 @@
             }
 
         }
-    </script>
+    </script> -->
     <!-- End of Location fetching javascript -->
 
     <!-- reseting form after submitting -->
     <script>
-        document.getElementById('salesSampling').addEventListener('submit', function (event) {
+        document.getElementById('WapdaConsumptionForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent the default form submission
 
             // Get the form values
-            var resetingForm = document.getElementById('name').value;
-            var email = document.getElementById('streetAddress').value;
-            var email = document.getElementById('state').value;
-            var email = document.getElementById('city').value;
-            var email = document.getElementById('phone').value;
-            var email = document.getElementById('Nearestlandmarks').value;
-            var email = document.getElementById('Shopname').value;
-            var email = document.getElementById('remarks').value;
-            var email = document.getElementById('followupdate').value;
-            var email = document.getElementById('latitude').value;
-            var email = document.getElementById('longitude').value;
+            var resetingForm = document.getElementById('wapdapeak').value;
+            var email = document.getElementById('wapdaoffpeak').value;
+            var email = document.getElementById('wapdapeakend').value;
+            var email = document.getElementById('wapdaoffpeakend').value;
+            var email = document.getElementById('wapdatotalend').value;
+            var email = document.getElementById('wapdaused').value;
+            var email = document.getElementById('wapdaavailibility').value;
+            var email = document.getElementById('gen1Units').value;
+            var email = document.getElementById('gen1diesel').value;
+            var email = document.getElementById('gen1duration').value;
+            var email = document.getElementById('gen1Units').value;
+            var email = document.getElementById('gen1diesel').value;
+            var email = document.getElementById('gen1duration').value;
+            var email = document.getElementById('gen1used').value;
+            var email = document.getElementById('wapdatotal').value;
+            var email = document.getElementById('gen3Units').value;
+            var email = document.getElementById('gen3diesel').value;
+            var email = document.getElementById('gen3duration').value;
+            var email = document.getElementById('powerUseAgri').value;
+            var email = document.getElementById('runningLoad').value;
+            var email = document.getElementById('totalrunningtime').value;
+            var email = document.getElementById('Submersibleremarks').value;
+            var email = document.getElementById('productiontotalrunninghrs').value;
+            var email = document.getElementById('productionremarks').value;
+            var email = document.getElementById('ohpcf').value;
+            var email = document.getElementById('ohpcfremarks').value;
 
             // Perform any additional validation or processing here
-
-
 
             // Send the form data to the server (you can use AJAX or other techniques)
 
             // Reset the form fields
-            document.getElementById('name').value = '';
-            document.getElementById('streetAddress').value = '';
-            document.getElementById('state').value = '';
-            document.getElementById('city').value = '';
-            document.getElementById('phone').value = '';
-            document.getElementById('Nearestlandmarks').value = '';
-            document.getElementById('Shopname').value = '';
-            document.getElementById('remarks').value = '';
-            document.getElementById('followupdate').value = '';
-            document.getElementById('latitude').value = '';
-            document.getElementById('longitude').value = '';
-
+            document.getElementById('wapdapeak').value = '';
+            document.getElementById('wapdaoffpeak').value = '';
+            document.getElementById('wapdapeakend').value = '';
+            document.getElementById('wapdaoffpeakend').value = '';
+            document.getElementById('wapdatotalend').value = '';
+            document.getElementById('wapdaused').value = '';
+            document.getElementById('wapdaavailibility').value = '';
+            document.getElementById('gen1Units').value = '';
+            document.getElementById('gen1diesel').value = '';
+            document.getElementById('gen1duration').value = '';
+            document.getElementById('gen1Units').value = '';
+            document.getElementById('gen1duration').value = '';
+            document.getElementById('gen1diesel').value = '';
+            document.getElementById('gen1used').value = '';
+            document.getElementById('wapdatotal').value = '';
+            document.getElementById('gen3Units').value = '';
+            document.getElementById('gen3diesel').value = '';
+            document.getElementById('gen3duration').value = '';
+            document.getElementById('powerUseAgri').value = '';
+            document.getElementById('runningLoad').value = '';
+            document.getElementById('totalrunningtime').value = '';
+            document.getElementById('Submersibleremarks').value = '';
+            document.getElementById('productiontotalrunninghrs').value = '';
+            document.getElementById('productionremarks').value = '';
+            document.getElementById('ohpcf').value = '';
+            document.getElementById('ohpcfremarks').value = '';
 
         });
 
@@ -336,15 +378,19 @@
             event.preventDefault();
             showSpinner(); // Show the spinner
 
-
         }
 
         // Add event listener to form submit
 
         form.addEventListener("submit", handleSubmit);
+
+
+
+
     </script>
 
     <!-- end of for reseting after submitting -->
+
 
 
     <!-- end of spinner -->
