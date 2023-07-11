@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- wapdaAdding -->
-    <script>
+    <!-- <script>
         function calculateTotal(peakFieldId, offPeakFieldId, totalFieldId) {
             // Get the values of the two input fields
             var peakValue = parseFloat(document.getElementById(peakFieldId).value);
@@ -19,7 +19,7 @@
             // Set the result in the total field
             document.getElementById(totalFieldId).value = totalValue;
         }
-    </script>
+    </script> -->
 </head>
 
 <body>
@@ -47,8 +47,7 @@
                         placeholder="Please enter Off Peak (KWH)"
                         oninput="calculateTotal('wapdapeak', 'wapdaoffpeak', 'wapdatotal')">
                     <input type="number" required min="0" id="wapdatotal"
-                        name="Wapda Reading start of the Day Total (KWH)" required placeholder="Total (KWH)"
-                        tabindex="-1" readonly>
+                        name="Wapda Reading start of the Day Total (KWH)" required placeholder="Total (KWH)">
                 </div>
 
                 <label for="RSD">Reading at the End of the Day:</label>
@@ -61,8 +60,7 @@
                         placeholder="Please enter Off Peak (KWH)"
                         oninput="calculateTotal('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')">
                     <input type="number" required min="0" id="wapdatotalend"
-                        name="Wapda Reading End of the Day Total (KWH)" required placeholder="Total (KWH)" tabindex="-1"
-                        readonly>
+                        name="Wapda Reading End of the Day Total (KWH)" required placeholder="Total (KWH)">
                 </div>
                 <div class="RED">
                     <input type="number" required min="0" id="wapdaused" name="Wapda Total Used (KWH)" required
