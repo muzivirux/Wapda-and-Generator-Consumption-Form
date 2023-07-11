@@ -66,10 +66,12 @@
                     <input type="number" required min="0" id="wapdaused" name="Wapda Total Used (KWH)" required
                         placeholder="Wapda Total Used (KWH)">
 
+
                     <!-- wapda availibility duration time -->
                     <label>wapda availibility duration time</label>
-                    <input type="time" required min="0" id="wapdaavailibility" name="wapda availibility duration time"
-                        required placeholder="wapda availibility duration time">
+
+                    <input type="text" class="input" id="availability-duration" name="wapda availibility duration time"
+                        placeholder="HH:MM" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
 
                 </div>
                 <!-- End of wapda -->
@@ -146,8 +148,10 @@
                                 <div class="sections">
                                     <h2>Submersible Water Turbine</h2>
                                     <label for="totalrunningtime">Total running time</label>
-                                    <input type="time" id="totalrunningtime"
-                                        name="Submersible water Turbine Total running time" min="0" max="1440" required>
+
+                                    <input type="text" class="input" id="availability-duration"
+                                        name="Submersible water Turbine Total running time" placeholder="HH:MM"
+                                        pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
 
 
                                     <label for="Submersibleremarks">Remarks</label>
@@ -159,8 +163,10 @@
                                 <div class="sections">
                                     <h2>Production line Power Consumption</h2>
                                     <label for="productionline">Total running hours/day</label>
-                                    <input type="time" required id="productiontotalrunninghrs"
-                                        name="Production line Power Consumption Total running hours/day" required>
+
+                                    <input type="text" class="input" id="availability-duration"
+                                        name="Production line Power Consumption Total running hours/day"
+                                        placeholder="HH:MM" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
 
                                     <label for="productionremarks">Remarks</label>
                                     <input type="text" required id="productionremarks"
@@ -172,8 +178,10 @@
                                     <h2 class="ohpcfHeading">Over Head Power consumption of factory (Light, fans etc.)
                                     </h2>
                                     <label for="ohpcf">Total running hours/day</label>
-                                    <input type="time" required id="ohpcf"
-                                        name="Over Head Power consumption of factory Total running hours/day" required>
+
+                                    <input type="text" class="input" id="availability-duration"
+                                        name="Over Head Power consumption of factory Total running hours/day"
+                                        placeholder="HH:MM" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
 
                                     <label for="productionremarks">Remarks</label>
                                     <input type="text" required id="ohpcfremarks"
@@ -344,6 +352,22 @@
 
 
     </script>
+
+    <!-- check time validations -->
+    <script>
+        // Get the input element
+        var durationInput = document.getElementById('availability-duration');
+        durationInput.addEventListener('change', function () {
+            durationInput.setCustomValidity('');
+            var value = durationInput.value;
+            var hours = parseInt(value.split(':')[0]);
+            var minutes = parseInt(value.split(':')[1]);
+            if (isNaN(hours) || isNaN(minutes) || minutes >= 60) {
+                durationInput.setCustomValidity('Please enter a valid duration in HH:MM format with hours under 23 and minutes under 60.');
+            }
+        });
+    </script>
+    <!-- End of check time validations -->
 
     <!-- end of for reseting after submitting -->
 
