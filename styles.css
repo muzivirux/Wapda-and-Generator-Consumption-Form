@@ -4,21 +4,51 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+} /* heading animation */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8c80798;
+  clip-path: ellipse(50% 30% at 50% 0%);
+  animation: bgAnimation 1s forwards;
+  z-index: -1;
+  height: 75vh;
+}
+@keyframes bgAnimation {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 20px;
-  background-color: #4285f4;
+  align-items: center;
+  background-color: #e8e8e8;
 }
-
 h1 {
   text-align: center;
+  font-weight: 400;
+  margin-top: 7rem;
 }
 
 form {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 4rem auto;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
 }
 
 /* This form fuel and consumption */
@@ -29,6 +59,7 @@ form {
 .RSD {
   display: flex;
   justify-content: space-around;
+  gap: 1rem;
 }
 
 /* end of This form fuel and consumption */
@@ -45,18 +76,19 @@ input[type="range"] {
 }
 
 select,
-input[type="time"],
 input[type="text"],
+input[type="time"],
 input[type="number"],
-input[type="email"],
-input[type="date"],
-input[type="textarea"] {
+textarea {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border: none;
   border-radius: 4px;
-  box-sizing: border-box;
+  box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+  color: #1a1a1a;
+  background-color: #f8c807;
+  margin-top: 1rem;
 }
 .ohpcfHeading {
   font-size: 1.2rem;
@@ -71,14 +103,18 @@ input[type="textarea"] {
 }
 
 input[type="submit"] {
-  margin-top: 10px;
-  background-color: #4caf50;
-  color: white;
+  margin-top: 1rem;
+  background-color: #1a1a1a;
+  color: #f8c807;
   border: none;
   padding: 10px;
   cursor: pointer;
   width: 100%;
   font-size: 16px;
+  transition: color 0.3s;
+}
+input[type="submit"]:hover {
+  color: #e88228;
 }
 
 /* dropdown */
@@ -117,16 +153,16 @@ li.selected {
   align-items: center;
   text-align: center;
   margin: 4rem 0 2rem 0;
-  color: #fff;
+  color: #1a1a1a;
 }
 .footer a {
   text-decoration: none;
-  color: #f3f1f1;
+  color: #1a1a1a;
   transition: color 0.2s;
 }
 
 .footer a:hover {
-  color: #222;
+  color: #e88228;
 }
 /* end of footer */
 
@@ -230,3 +266,101 @@ li.selected {
   margin-top: 4rem;
 }
 /* end of modal block pop up */
+
+/* new css style */
+
+#logoImg {
+  margin: 2rem;
+
+  position: absolute;
+  right: 33vw;
+  top: 1vh;
+  width: 150px;
+  z-index: 100;
+  animation: logo-appear 1s ease-in-out forwards;
+}
+@keyframes logo-appear {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+#line {
+  width: 28%;
+  height: 2px;
+  background-color: black;
+  margin: 10px auto;
+}
+
+/* responsive */
+
+@media (max-width: 1440px) {
+  #logoImg {
+    right: 26vw;
+    transition: all 0.6s;
+  }
+  #line {
+    width: 40%;
+    transition: all 0.6s;
+  }
+}
+
+@media (max-width: 1138px) {
+  #logoImg {
+    right: 20vw;
+    transition: all 0.6s;
+  }
+  #line {
+    width: 50%;
+    transition: all 0.6s;
+  }
+  .footer {
+    font-size: 70%;
+    transition: all 0.6s;
+  }
+}
+@media (max-width: 900px) {
+  #logoImg {
+    right: 10vw;
+    transition: all 0.6s;
+  }
+  #line {
+    width: 70%;
+    transition: all 0.6s;
+  }
+}
+
+@media (max-width: 600px) {
+  #logoImg {
+    right: 6vw;
+    transition: all 0.6s;
+  }
+  #line {
+    width: 90%;
+    transition: all 0.6s;
+  }
+  body::before {
+    display: none;
+  }
+  spline-viewer {
+    display: none;
+  }
+}
+@media (max-width: 375px) {
+  #logoImg {
+    width: 10rem;
+    right: 0;
+    transition: all 0.6s;
+  }
+  html {
+    font-size: 65%;
+  }
+  #locationBtn {
+    font-size: 1rem;
+  }
+}

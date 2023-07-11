@@ -4,8 +4,7 @@
 <head>
     <title>Wapda Consumption</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- wapdaAdding -->
     <script>
@@ -24,7 +23,16 @@
 </head>
 
 <body>
+    <!-- Logo -->
+    <div class="logo">
+        <a href="https://rafiqfarmfoods.com/" target="_blank">
+            <img id="logoImg" src="/images/rff.png">
+        </a>
+    </div>
+
+    <!-- Form -->
     <h1>Wapda Consumption</h1>
+    <div id="line"></div>
     <form id="WapdaConsumptionForm">
         <!-- Wapda -->
         <div class="sections">
@@ -142,10 +150,10 @@
                                     <label for="totalrunningtime">Total running time</label>
                                     <input type="time" id="totalrunningtime"
                                         name="Submersible water Turbine Total running time" min="0" max="1440" required>
-                                    <span id="totalrunningtimeValue"></span>
+
 
                                     <label for="Submersibleremarks">Remarks</label>
-                                    <input type="textarea" required id="Submersibleremarks"
+                                    <input type="text" required id="Submersibleremarks"
                                         name="Submersible Water Tubine Remarks" required
                                         placeholder="Submersible Water Turbine remarks">
                                 </div>
@@ -157,7 +165,7 @@
                                         name="Production line Power Consumption Total running hours/day" required>
 
                                     <label for="productionremarks">Remarks</label>
-                                    <input type="textarea" required id="productionremarks"
+                                    <input type="text" required id="productionremarks"
                                         name="Production line Power Consumption remarks" required
                                         placeholder="Production line Power Consumption remarks">
                                 </div>
@@ -170,7 +178,7 @@
                                         name="Over Head Power consumption of factory Total running hours/day" required>
 
                                     <label for="productionremarks">Remarks</label>
-                                    <input type="textarea" required id="ohpcfremarks"
+                                    <input type="text" required id="ohpcfremarks"
                                         name="Over Head Power consumption of factory remarks" required
                                         placeholder="Over Head Power consumption of factory remarks">
                                 </div>
@@ -196,8 +204,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Copyright &copy; <a href="https://rafiqfarmfoods.com/" target="_blank"> Rafiq Farm Foods </a>| All Right
-            Reserved. </p>
+        <p><a href="https://rafiqfarmfoods.com/" target="_blank">Copyright &copy; Rafiq Farm Foods | All Right
+                Reserved. </a></p>
     </footer>
     <!-- end of Footer -->
 
@@ -236,58 +244,8 @@
         });
 
 
-        // range field
-        // var totalrunningtimeInput = document.getElementById("totalrunningtime");
-        // var totalrunningtimeValue = document.getElementById("totalrunningtimeValue");
-
-        // totalrunningtimeInput.addEventListener("input", function () {
-        //     var totalMinutes = parseInt(totalrunningtimeInput.value);
-        //     var hours = Math.floor(totalMinutes / 60);
-        //     var minutes = totalMinutes % 60;
-
-        //     var formattedTime = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
-        //     totalrunningtimeValue.textContent = formattedTime;
-        // });
-
     </script>
 
-    <!-- Location fetching javascript -->
-    <!-- <script>
-        function fetchLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-            } else {
-                alert("Geolocation is not supported by your browser.");
-            }
-        }
-
-        function successCallback(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-
-            document.getElementById('latitude').value = latitude;
-            document.getElementById('longitude').value = longitude;
-        }
-
-        function errorCallback(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("Location permission denied. Please enable location services.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred while getting the location.");
-                    break;
-            }
-
-        }
-    </script> -->
-    <!-- End of Location fetching javascript -->
 
     <!-- reseting form after submitting -->
     <script>
