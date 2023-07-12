@@ -268,7 +268,9 @@ li.selected {
 /* end of modal block pop up */
 
 /* new css style */
-
+::placeholder {
+  font-size: 0.6rem;
+}
 #logoImg {
   margin: 2rem;
 
