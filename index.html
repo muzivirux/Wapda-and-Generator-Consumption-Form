@@ -26,7 +26,7 @@
     <!-- Logo -->
     <div class="logo">
         <a href="https://rafiqfarmfoods.com/" target="_blank">
-            <img id="logoImg" src="/images/rff.png">
+            <img id="logoImg" src="./images/rff.png">
         </a>
     </div>
 
@@ -70,7 +70,7 @@
                     <!-- wapda availibility duration time -->
                     <label>wapda availibility duration time</label>
 
-                    <input type="text" class="input" id="availability-duration" name="wapda availibility duration time"
+                    <input type="text" id="availability-duration" name="wapda availibility duration time"
                         placeholder="HH:MM" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
 
                 </div>
@@ -82,22 +82,22 @@
                     <h2>For Generator 1</h1>
                         <label for="RSD">Reading at the start of the Day:</label>
                         <div class="RSD">
-                            <input type="text" id="gen1Units" name="Generator 1 Start of the Day UNITS (KWH)" required
-                                placeholder="Please enter Units (KWH)">
-                            <input type="text" id="gen1diesel" name="Generator 1 Start of the Day DIESEL (LTR)" required
-                                placeholder="Please enter Diesel (LTR)">
-                            <input type="text" id="gen1duration" name="Generator 1 Start of the Day DURATION (RHs)"
-                                required placeholder="Please enter Duration (RHs)">
+                            <input type="number" id="gen1Units" name="Generator 1 Start of the Day UNITS (KWH)" required
+                                placeholder="Please enter Units (KWH)" min="0">
+                            <input type="number" id="gen1diesel" name="Generator 1 Start of the Day DIESEL (LTR)" required
+                                placeholder="Please enter Diesel (LTR)" min="0">
+                            <input type="number" id="gen1duration" name="Generator 1 Start of the Day DURATION (RHs)"
+                                required placeholder="Please enter Duration (RHs)" min="0">
                         </div>
 
                         <label for="RSD">Reading at the End of the Day:</label>
                         <div class="RSD">
-                            <input type="text" id="gen1Units" name="Generator 1 End of the Day UNITS (KWH)" required
-                                placeholder="Please enter Units (KWH)">
-                            <input type="text" id="gen1diesel" name="Generator 1 End of the Day DIESEL (LTR)" required
-                                placeholder="Please enter Diesel (LTR)">
-                            <input type="text" id="gen1duration" name="Generator 1 End of the Day DURATION (RHs)"
-                                required placeholder="Please enter Duration (RHs)">
+                            <input type="number" id="gen1Units" name="Generator 1 End of the Day UNITS (KWH)" required
+                                placeholder="Please enter Units (KWH)" min="0">
+                            <input type="number" id="gen1diesel" name="Generator 1 End of the Day DIESEL (LTR)" required
+                                placeholder="Please enter Diesel (LTR)" min="0">
+                            <input type="number" id="gen1duration" name="Generator 1 End of the Day DURATION (RHs)"
+                                required placeholder="Please enter Duration (RHs)" min="0">
                         </div>
                         <div class="RSD">
                             <input type="number" required min="0" id="gen1used" name="Generator 1 Total Used (KWH)"
@@ -110,24 +110,24 @@
                             <h2>For Generator 3</h1>
                                 <label for="RSD">Reading at the start of the Day:</label>
                                 <div class="RSD">
-                                    <input type="text" id="gen3Units" name="Generator 3 Start of the Day UNITS (KWH)"
-                                        required placeholder="Please enter Units (KWH)">
-                                    <input type="text" id="gen3diesel" name="Generator 3 Start of the Day DIESEL (LTR)"
-                                        required placeholder="Please enter Diesel (LTR)">
-                                    <input type="text" id="gen3duration"
+                                    <input type="number" id="gen3Units" name="Generator 3 Start of the Day UNITS (KWH)"
+                                        required placeholder="Please enter Units (KWH)" min0="">
+                                    <input type="number" id="gen3diesel" name="Generator 3 Start of the Day DIESEL (LTR)"
+                                        required placeholder="Please enter Diesel (LTR)" min="0">
+                                    <input type="number" id="gen3duration"
                                         name="Generator 3 Start of the Day DURATION (RHs)" required
-                                        placeholder="Please enter Duration (RHs)">
+                                        placeholder="Please enter Duration (RHs)" min="0">
                                 </div>
 
                                 <label for="RSD">Reading at the End of the Day:</label>
                                 <div class="RSD">
-                                    <input type="text" id="gen3Units" name="Generator 3 End of the Day UNITS (KWH)"
-                                        required placeholder="Please enter Units (KWH)">
-                                    <input type="text" id="gen3diesel" name="Generator 3 End of the Day DIESEL (LTR)"
-                                        required placeholder="Please enter Diesel (LTR)">
-                                    <input type="text" id="gen3duration"
+                                    <input type="number" id="gen3Units" name="Generator 3 End of the Day UNITS (KWH)"
+                                        required placeholder="Please enter Units (KWH)" min="0">
+                                    <input type="number" id="gen3diesel" name="Generator 3 End of the Day DIESEL (LTR)"
+                                        required placeholder="Please enter Diesel (LTR)" min="0">
+                                    <input type="number" id="gen3duration"
                                         name="Generator 3 End of the Day DURATION (RHs)" required
-                                        placeholder="Please enter Duration (RHs)">
+                                        placeholder="Please enter Duration (RHs)" min="0">
                                 </div>
                                 <div class="RSD">
                                     <input type="number" required min="0" id="gen3used"
@@ -145,20 +145,7 @@
                                     <input type="number" required min="0" id="runningLoad" name="Running load amp"
                                         required placeholder="Running load amp">
                                 </div>
-                                <div class="sections">
-                                    <h2>Submersible Water Turbine</h2>
-                                    <label for="totalrunningtime">Total running time</label>
-
-                                    <input type="text" class="input" id="availability-duration"
-                                        name="Submersible water Turbine Total running time" placeholder="HH:MM"
-                                        pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
-
-
-                                    <label for="Submersibleremarks">Remarks</label>
-                                    <input type="text" required id="Submersibleremarks"
-                                        name="Submersible Water Tubine Remarks" required
-                                        placeholder="Submersible Water Turbine remarks">
-                                </div>
+                               
 
                                 <div class="sections">
                                     <h2>Production line Power Consumption</h2>
@@ -258,69 +245,15 @@
         document.getElementById('WapdaConsumptionForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent the default form submission
 
-            // Get the form values
-            var resetingForm = document.getElementById('wapdapeak').value;
-            var email = document.getElementById('wapdaoffpeak').value;
-            var email = document.getElementById('wapdapeakend').value;
-            var email = document.getElementById('wapdaoffpeakend').value;
-            var email = document.getElementById('wapdatotalend').value;
-            var email = document.getElementById('wapdaused').value;
-            var email = document.getElementById('wapdaavailibility').value;
-            var email = document.getElementById('gen1Units').value;
-            var email = document.getElementById('gen1diesel').value;
-            var email = document.getElementById('gen1duration').value;
-            var email = document.getElementById('gen1Units').value;
-            var email = document.getElementById('gen1diesel').value;
-            var email = document.getElementById('gen1duration').value;
-            var email = document.getElementById('gen1used').value;
-            var email = document.getElementById('wapdatotal').value;
-            var email = document.getElementById('gen3Units').value;
-            var email = document.getElementById('gen3diesel').value;
-            var email = document.getElementById('gen3duration').value;
-            var email = document.getElementById('powerUseAgri').value;
-            var email = document.getElementById('runningLoad').value;
-            var email = document.getElementById('totalrunningtime').value;
-            var email = document.getElementById('Submersibleremarks').value;
-            var email = document.getElementById('productiontotalrunninghrs').value;
-            var email = document.getElementById('productionremarks').value;
-            var email = document.getElementById('ohpcf').value;
-            var email = document.getElementById('ohpcfremarks').value;
+            this.reset();
 
-            // Perform any additional validation or processing here
 
-            // Send the form data to the server (you can use AJAX or other techniques)
-
-            // Reset the form fields
-            document.getElementById('wapdapeak').value = '';
-            document.getElementById('wapdaoffpeak').value = '';
-            document.getElementById('wapdapeakend').value = '';
-            document.getElementById('wapdaoffpeakend').value = '';
-            document.getElementById('wapdatotalend').value = '';
-            document.getElementById('wapdaused').value = '';
-            document.getElementById('wapdaavailibility').value = '';
-            document.getElementById('gen1Units').value = '';
-            document.getElementById('gen1diesel').value = '';
-            document.getElementById('gen1duration').value = '';
-            document.getElementById('gen1Units').value = '';
-            document.getElementById('gen1duration').value = '';
-            document.getElementById('gen1diesel').value = '';
-            document.getElementById('gen1used').value = '';
-            document.getElementById('wapdatotal').value = '';
-            document.getElementById('gen3Units').value = '';
-            document.getElementById('gen3diesel').value = '';
-            document.getElementById('gen3duration').value = '';
-            document.getElementById('powerUseAgri').value = '';
-            document.getElementById('runningLoad').value = '';
-            document.getElementById('totalrunningtime').value = '';
-            document.getElementById('Submersibleremarks').value = '';
-            document.getElementById('productiontotalrunninghrs').value = '';
-            document.getElementById('productionremarks').value = '';
-            document.getElementById('ohpcf').value = '';
-            document.getElementById('ohpcfremarks').value = '';
 
         });
 
     </script>
+    <!-- end of for reseting after submitting -->
+
 
     <script>
         // Function to show the spinner
@@ -347,11 +280,10 @@
         // Add event listener to form submit
 
         form.addEventListener("submit", handleSubmit);
-
-
-
-
     </script>
+    <!-- End of spinner -->
+
+
 
     <!-- check time validations -->
     <script>
@@ -367,13 +299,8 @@
             }
         });
     </script>
-    <!-- End of check time validations -->
-
-    <!-- end of for reseting after submitting -->
 
 
-
-    <!-- end of spinner -->
 </body>
 
 </html>
