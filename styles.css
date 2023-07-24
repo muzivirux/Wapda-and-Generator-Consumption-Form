@@ -299,6 +299,31 @@ li.selected {
   margin: 10px auto;
 }
 
+.label {
+  margin-top: 2rem;
+}
+
+#wapdatotalend,
+#wapdapeakoffpeaktotalused,
+#wapdaoffpeakused,
+#wapdatotal,
+#gen1duration,
+#gen1durationend,
+#gen1durationtotal,
+#gen1unit,
+#gen1dieseltotal,
+#gen1unittotal,
+#gen3duration,
+#gen3durationend,
+#gen3usedtotal,
+#gen3dieseltotal,
+#gen3unitstotal,
+#wapdapeakused {
+  /* background-color: #189ab4; */
+  font-weight: 700;
+  opacity: 0.7;
+}
+
 /* responsive */
 
 @media (max-width: 1440px) {

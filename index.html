@@ -7,19 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- wapdaAdding -->
-    <!-- <script>
-        function calculateTotal(peakFieldId, offPeakFieldId, totalFieldId) {
-            // Get the values of the two input fields
-            var peakValue = parseFloat(document.getElementById(peakFieldId).value);
-            var offPeakValue = parseFloat(document.getElementById(offPeakFieldId).value);
+    <script>
+        // function calculateTotal(peakFieldId, offPeakFieldId, totalFieldId) {
+        //     // Get the values of the two input fields
+        //     var peakValue = parseFloat(document.getElementById(peakFieldId).value);
+        //     var offPeakValue = parseFloat(document.getElementById(offPeakFieldId).value);
 
-            // Perform the addition
-            var totalValue = peakValue + offPeakValue;
+        //     // Perform the addition
+        //     var totalValue = peakValue + offPeakValue;
 
-            // Set the result in the total field
-            document.getElementById(totalFieldId).value = totalValue;
-        }
-    </script> -->
+        //     // Set the result in the total field
+        //     document.getElementById(totalFieldId).value = totalValue;
+        // }
+
+    </script>
 </head>
 
 <body>
@@ -41,39 +42,51 @@
                 <div class="RSD">
                     <input type="number" required min="0" id="wapdapeak"
                         name="Wapda Reading start of the Day Peak (KWH)" required placeholder="Please enter Peak (KWH)"
-                        oninput="calculateTotal('wapdapeak', 'wapdaoffpeak', 'wapdatotal')">
+                        oninput="sumFields('wapdapeak', 'wapdaoffpeak', 'wapdatotal')"
+                        onchange="sumFields3('wapdapeak', 'wapdapeakend', 'wapdapeakused')">
                     <input type="number" required min="0" id="wapdaoffpeak"
                         name="Wapda Reading start of the Day Off Peak (KWH)" required
                         placeholder="Please enter Off Peak (KWH)"
-                        oninput="calculateTotal('wapdapeak', 'wapdaoffpeak', 'wapdatotal')">
+                        oninput="sumFields('wapdapeak', 'wapdaoffpeak', 'wapdatotal')"
+                        onchange="sumFields3('wapdaoffpeak', 'wapdaoffpeakend', 'wapdaoffpeakused')">
                     <input type="number" required min="0" id="wapdatotal"
-                        name="Wapda Reading start of the Day Total (KWH)" required placeholder="Total (KWH)">
+                        name="Wapda Reading start of the Day Total (KWH)" required placeholder="Total (KWH)" readonly
+                        tabindex="-1">
                 </div>
 
-                <label for="RSD">Reading at the End of the Day:</label>
+                <label for="RSD" class="label">Reading at the End of the Day:</label>
                 <div class="RSD">
                     <input type="number" required min="0" id="wapdapeakend"
                         name="Wapda Reading End of the Day Peak (KWH)" required placeholder="Please enter Peak (KWH)"
-                        oninput="calculateTotal('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')">
+                        oninput="sumFields('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')"
+                        onchange="sumFields3('wapdapeak', 'wapdapeakend', 'wapdapeakused')">
                     <input type="number" required min="0" id="wapdaoffpeakend"
                         name="Wapda Reading End of the Day Off Peak (KWH)" required
                         placeholder="Please enter Off Peak (KWH)"
-                        oninput="calculateTotal('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')">
+                        oninput="sumFields('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')"
+                        onchange="sumFields3('wapdaoffpeak', 'wapdaoffpeakend', 'wapdaoffpeakused')">
                     <input type="number" required min="0" id="wapdatotalend"
-                        name="Wapda Reading End of the Day Total (KWH)" required placeholder="Total (KWH)">
+                        name="Wapda Reading End of the Day Total (KWH)" required placeholder="Total (KWH)"
+                        tabindex="-1">
                 </div>
-                <div class="RED">
-                    <input type="number" required min="0" id="wapdaused" name="Wapda Total Used (KWH)" required
-                        placeholder="Wapda Total Used (KWH)">
 
-
-                    <!-- wapda availibility duration time -->
-                    <label>wapda availibility duration time</label>
-
-                    <input type="text" id="availability-duration" name="wapda availibility duration time"
-                        placeholder="HH:MM" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
+                <label for="RSD" class="label">Total Used:</label>
+                <div class="RSD">
+                    <input type="number" required min="0" id="wapdapeakused" name="Wapda Peak Total Used (KWH)" required
+                        placeholder="Wapda Peak Total Used (KWH)" readonly tabindex="-1">
+                    <input type="number" required min="0" id="wapdaoffpeakused" name="Wapda Off Peak Total Used (KWH)"
+                        required placeholder="Wapda Off Peak Total Used (KWH)" readonly tabindex="-1">
+                    <input type="number" required min="0" id="wapdapeakoffpeaktotalused" name="Wapda Total Used (KWH)"
+                        required placeholder="Wapda Total Used (KWH)" readonly tabindex="-1">
 
                 </div>
+                <!-- wapda availibility duration time -->
+                <label class="label">wapda availibility duration time</label>
+
+                <input type="text" id="availability-duration" name="wapda availibility duration time"
+                    placeholder="HH:MM" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" class="time-input" required>
+
+
                 <!-- End of wapda -->
 
 
@@ -83,25 +96,42 @@
                         <label for="RSD">Reading at the start of the Day:</label>
                         <div class="RSD">
                             <input type="number" id="gen1Units" name="Generator 1 Start of the Day UNITS (KWH)" required
-                                placeholder="Please enter Units (KWH)" min="0">
-                            <input type="number" id="gen1diesel" name="Generator 1 Start of the Day DIESEL (LTR)" required
-                                placeholder="Please enter Diesel (LTR)" min="0">
+                                placeholder="Please enter Units (KWH)" min="0"
+                                oninput="sumFields('gen1Units', 'gen1diesel', 'gen1duration')"
+                                onchange="sumFields3('gen1Units', 'gen1Unitsend', 'gen1unittotal')">
+                            <input type="number" id="gen1diesel" name="Generator 1 Start of the Day DIESEL (LTR)"
+                                required placeholder="Please enter Diesel (LTR)" min="0"
+                                oninput="sumFields('gen1Units', 'gen1diesel', 'gen1duration')"
+                                onchange="sumFields3('gen1diesel', 'gen1dieselend', 'gen1dieseltotal')">
                             <input type="number" id="gen1duration" name="Generator 1 Start of the Day DURATION (RHs)"
-                                required placeholder="Please enter Duration (RHs)" min="0">
+                                required placeholder="Please enter Duration (RHs)" min="0" readonly tabindex="-1">
                         </div>
 
                         <label for="RSD">Reading at the End of the Day:</label>
                         <div class="RSD">
-                            <input type="number" id="gen1Units" name="Generator 1 End of the Day UNITS (KWH)" required
-                                placeholder="Please enter Units (KWH)" min="0">
-                            <input type="number" id="gen1diesel" name="Generator 1 End of the Day DIESEL (LTR)" required
-                                placeholder="Please enter Diesel (LTR)" min="0">
-                            <input type="number" id="gen1duration" name="Generator 1 End of the Day DURATION (RHs)"
-                                required placeholder="Please enter Duration (RHs)" min="0">
+                            <input type="number" id="gen1Unitsend" name="Generator 1 End of the Day UNITS (KWH)"
+                                required placeholder="Please enter Units (KWH)" min="0"
+                                oninput="sumFields('gen1Unitsend', 'gen1dieselend', 'gen1durationend')"
+                                onchange="sumFields3('gen1Units', 'gen1Unitsend', 'gen1unittotal')">
+                            <input type="number" id="gen1dieselend" name="Generator 1 End of the Day DIESEL (LTR)"
+                                required placeholder="Please enter Diesel (LTR)" min="0"
+                                oninput="sumFields('gen1Unitsend', 'gen1dieselend', 'gen1durationend')"
+                                onchange="sumFields3('gen1diesel', 'gen1dieselend', 'gen1dieseltotal')">
+                            <input type="number" id="gen1durationend" name="Generator 1 End of the Day DURATION (RHs)"
+                                required placeholder="Please enter Duration (RHs)" min="0" tabindex="-1" readonly>
                         </div>
+
+                        <label for="RSD" class="label">Total Used:</label>
                         <div class="RSD">
-                            <input type="number" required min="0" id="gen1used" name="Generator 1 Total Used (KWH)"
-                                required placeholder="Generator 1 Total Used (KWH)">
+                            <input type="number" required min="0" id="gen1unittotal"
+                                name="Generator 1 Total Used Units (KWH)" required placeholder="Total Used Units (KWH)"
+                                tabindex="-1" readonly>
+                            <input type="number" required min="0" id="gen1dieseltotal"
+                                name="Generator 1 Total Used Diesel (KWH)" required
+                                placeholder="Total Used Diesel (KWH)" tabindex="-1" readonly>
+                            <input type="number" required min="0" id="gen1durationtotal"
+                                name="Generator 1 Total Duration (RHs)" required
+                                placeholder="Generator 1 Total Duration (RHs)" tabindex="-1" readonly>
                         </div>
                         <!-- end of Generator 1 -->
 
@@ -111,66 +141,86 @@
                                 <label for="RSD">Reading at the start of the Day:</label>
                                 <div class="RSD">
                                     <input type="number" id="gen3Units" name="Generator 3 Start of the Day UNITS (KWH)"
-                                        required placeholder="Please enter Units (KWH)" min0="">
-                                    <input type="number" id="gen3diesel" name="Generator 3 Start of the Day DIESEL (LTR)"
-                                        required placeholder="Please enter Diesel (LTR)" min="0">
+                                        required placeholder="Please enter Units (KWH)" min="0"
+                                        oninput="sumFields('gen3Units', 'gen3diesel', 'gen3duration')"
+                                        onchange="sumFields3('gen3Units', 'gen3Unitsend', 'gen3unitstotal')">
+                                    <input type="number" id="gen3diesel"
+                                        name="Generator 3 Start of the Day DIESEL (LTR)" required
+                                        placeholder="Please enter Diesel (LTR)" min="0"
+                                        oninput="sumFields('gen3Units', 'gen3diesel', 'gen3duration')"
+                                        onchange="sumFields3('gen3diesel', 'gen3dieselend', 'gen3dieseltotal')">
                                     <input type="number" id="gen3duration"
-                                        name="Generator 3 Start of the Day DURATION (RHs)" required
-                                        placeholder="Please enter Duration (RHs)" min="0">
+                                        name="Generator 3 Start of the Day DURATION (RHs)"
+                                        placeholder="Please enter Duration (RHs)" min="0" tabindex="-1" required
+                                        readonly>
                                 </div>
 
                                 <label for="RSD">Reading at the End of the Day:</label>
                                 <div class="RSD">
-                                    <input type="number" id="gen3Units" name="Generator 3 End of the Day UNITS (KWH)"
-                                        required placeholder="Please enter Units (KWH)" min="0">
-                                    <input type="number" id="gen3diesel" name="Generator 3 End of the Day DIESEL (LTR)"
-                                        required placeholder="Please enter Diesel (LTR)" min="0">
-                                    <input type="number" id="gen3duration"
-                                        name="Generator 3 End of the Day DURATION (RHs)" required
-                                        placeholder="Please enter Duration (RHs)" min="0">
+                                    <input type="number" id="gen3Unitsend" name="Generator 3 End of the Day UNITS (KWH)"
+                                        required placeholder="Please enter Units (KWH)" min="0"
+                                        oninput="sumFields('gen3Unitsend', 'gen3dieselend', 'gen3durationend')"
+                                        onchange="sumFields3('gen3Units', 'gen3Unitsend', 'gen3unitstotal')">
+                                    <input type="number" id="gen3dieselend"
+                                        name="Generator 3 End of the Day DIESEL (LTR)" required
+                                        placeholder="Please enter Diesel (LTR)" min="0"
+                                        oninput="sumFields('gen3Unitsend', 'gen3dieselend', 'gen3durationend')"
+                                        onchange="sumFields3('gen3diesel', 'gen3dieselend', 'gen3dieseltotal')">
+                                    <input type="number" id="gen3durationend"
+                                        name="Generator 3 End of the Day DURATION (RHs)"
+                                        placeholder="Please enter Duration (RHs)" min="0" required readonly
+                                        tabindex="-1">
                                 </div>
+
+                                <label>Total Used:</label>
                                 <div class="RSD">
-                                    <input type="number" required min="0" id="gen3used"
-                                        name="Generator 3 Total Used (KWH)" required
-                                        placeholder="Generator 3 Total Used (KWH)">
+                                    <input type="number" min="0" id="gen3unitstotal" name="Generator 3 Total Used (KWH)"
+                                        placeholder="Generator 3 Total Used (KWH)" required readonly tabindex="-1">
+
+                                    <input type="number" min="0" id="gen3dieseltotal"
+                                        name="Generator 3 Total Used (KWH)" placeholder="Generator 3 Total Used (KWH)"
+                                        required readonly tabindex="-1">
+
+                                    <input type="number" min="0" id="gen3usedtotal" name="Generator 3 Total Used (KWH)"
+                                        placeholder="Generator 3 Total Used (KWH)" required readonly tabindex="-1">
                                 </div>
 
                                 <!-- End of Generator 3 -->
                                 <div class="sections">
-                                    <label for="poweruseagri">Power use from Agri store</label>
+                                    <label for="poweruseagri">Power use from Agri store:</label>
                                     <input type="number" required min="0" id="powerUseAgri"
-                                        name="Power Use from Agri store" required
-                                        placeholder="Power Use from Agri store">
-                                    <label for="poweruseagri">Running load amp</label>
+                                        name="Power Use from Agri store" placeholder="Power Use from Agri store"
+                                        required>
+                                    <label for="poweruseagri">Running load amp:</label>
                                     <input type="number" required min="0" id="runningLoad" name="Running load amp"
-                                        required placeholder="Running load amp">
+                                        placeholder="Running load amp" required>
                                 </div>
-                               
+
 
                                 <div class="sections">
                                     <h2>Production line Power Consumption</h2>
-                                    <label for="productionline">Total running hours/day</label>
+                                    <label for="productionline">Total running hours/day:</label>
 
-                                    <input type="text" class="input" id="availability-duration"
+                                    <input type="text" class="time-input" id="availability-duration"
                                         name="Production line Power Consumption Total running hours/day"
                                         placeholder="HH:MM" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
 
-                                    <label for="productionremarks">Remarks</label>
+                                    <label for="productionremarks">Remarks:</label>
                                     <input type="text" required id="productionremarks"
-                                        name="Production line Power Consumption remarks" required
-                                        placeholder="Production line Power Consumption remarks">
+                                        name="Production line Power Consumption remarks"
+                                        placeholder="Production line Power Consumption remarks" required>
                                 </div>
 
                                 <div class="sections">
                                     <h2 class="ohpcfHeading">Over Head Power consumption of factory (Light, fans etc.)
                                     </h2>
-                                    <label for="ohpcf">Total running hours/day</label>
+                                    <label for="ohpcf">Total running hours/day:</label>
 
-                                    <input type="text" class="input" id="availability-duration"
+                                    <input type="text" class="time-input" id="availability-duration"
                                         name="Over Head Power consumption of factory Total running hours/day"
                                         placeholder="HH:MM" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
 
-                                    <label for="productionremarks">Remarks</label>
+                                    <label for="productionremarks">Remarks:</label>
                                     <input type="text" required id="ohpcfremarks"
                                         name="Over Head Power consumption of factory remarks" required
                                         placeholder="Over Head Power consumption of factory remarks">
@@ -298,6 +348,64 @@
                 durationInput.setCustomValidity('Please enter a valid duration in HH:MM format with hours under 23 and minutes under 60.');
             }
         });
+
+        // auto add colon : between HH and MM
+        document.addEventListener('DOMContentLoaded', function () {
+            const timeInputs = document.querySelectorAll('.time-input');
+
+            timeInputs.forEach(function (inputElement) {
+                inputElement.addEventListener('input', function (event) {
+                    const inputValue = event.target.value.trim();
+
+                    // Check if the input value has reached 2 characters (HH)
+                    if (inputValue.length === 2 && !inputValue.includes(':')) {
+                        // Add the colon ':' after the HH part
+                        event.target.value = inputValue + ':';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Auto update fields -->
+    <script>
+        function sumFields(input1Id, input2Id, resultId) {
+            const field1Value = parseFloat(document.getElementById(input1Id).value) || 0;
+            const field2Value = parseFloat(document.getElementById(input2Id).value) || 0;
+            const sum = field1Value + field2Value;
+            document.getElementById(resultId).value = sum;
+            addTotal();
+            addTotalGen1();
+            addTotalGen3();
+        }
+        function sumFields3(input1Id, input2Id, resultId) {
+            const field1Value = parseFloat(document.getElementById(input1Id).value) || 0;
+            const field2Value = parseFloat(document.getElementById(input2Id).value) || 0;
+            const sum = field2Value - field1Value;
+            document.getElementById(resultId).value = sum;
+            addTotal();
+            addTotalGen1();
+            addTotalGen3();
+        }
+
+        function addTotal() {
+            const startDayTotal = parseFloat(document.getElementById('wapdatotal').value) || 0;
+            const endDayTotal = parseFloat(document.getElementById('wapdatotalend').value) || 0;
+            totalused = endDayTotal - startDayTotal;
+            document.getElementById('wapdapeakoffpeaktotalused').value = totalused;
+        }
+        function addTotalGen1() {
+            const startDayTotal = parseFloat(document.getElementById('gen1duration').value) || 0;
+            const endDayTotal = parseFloat(document.getElementById('gen1durationend').value) || 0;
+            totalused = endDayTotal - startDayTotal;
+            document.getElementById('gen1durationtotal').value = totalused;
+        }
+        function addTotalGen3() {
+            const startDayTotal = parseFloat(document.getElementById('gen3duration').value) || 0;
+            const endDayTotal = parseFloat(document.getElementById('gen3durationend').value) || 0;
+            totalused = endDayTotal - startDayTotal;
+            document.getElementById('gen3usedtotal').value = totalused;
+        }
     </script>
 
 
