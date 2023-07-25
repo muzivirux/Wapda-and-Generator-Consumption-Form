@@ -42,13 +42,13 @@
                 <div class="RSD">
                     <input type="number" required min="0" step="0.01" id="wapdapeak"
                         name="Wapda Reading start of the Day Peak (KWH)" required placeholder="Please enter Peak (KWH)"
-                        oninput="sumFields('wapdapeak', 'wapdaoffpeak', 'wapdatotal')"
-                        onchange="sumFields3('wapdapeak', 'wapdapeakend', 'wapdapeakused')">
+                        oninput="sumFields('wapdapeak', 'wapdapeakend', 'wapdapeakused')"
+                        onchange="sumFields3('wapdapeak', 'wapdaoffpeak', 'wapdatotal')">
                     <input type="number" required min="0" step="0.01" id="wapdaoffpeak"
                         name="Wapda Reading start of the Day Off Peak (KWH)" required
                         placeholder="Please enter Off Peak (KWH)"
-                        oninput="sumFields('wapdapeak', 'wapdaoffpeak', 'wapdatotal')"
-                        onchange="sumFields3('wapdaoffpeak', 'wapdaoffpeakend', 'wapdaoffpeakused')">
+                        oninput="sumFields('wapdaoffpeak', 'wapdaoffpeakend', 'wapdaoffpeakused')"
+                        onchange="sumFields3('wapdapeak', 'wapdaoffpeak', 'wapdatotal')">
                     <input type="number" required min="0" step="0.01" id="wapdatotal"
                         name="Wapda Reading start of the Day Total (KWH)" required placeholder="Total (KWH)" readonly
                         tabindex="-1">
@@ -58,13 +58,13 @@
                 <div class="RSD">
                     <input type="number" required min="0" step="0.01" id="wapdapeakend"
                         name="Wapda Reading End of the Day Peak (KWH)" required placeholder="Please enter Peak (KWH)"
-                        oninput="sumFields('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')"
-                        onchange="sumFields3('wapdapeak', 'wapdapeakend', 'wapdapeakused')">
+                        oninput="sumFields('wapdapeak', 'wapdapeakend', 'wapdapeakused')"
+                        onchange="sumFields3('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')">
                     <input type="number" required min="0" step="0.01" id="wapdaoffpeakend"
                         name="Wapda Reading End of the Day Off Peak (KWH)" required
                         placeholder="Please enter Off Peak (KWH)"
-                        oninput="sumFields('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')"
-                        onchange="sumFields3('wapdaoffpeak', 'wapdaoffpeakend', 'wapdaoffpeakused')">
+                        oninput="sumFields('wapdaoffpeak', 'wapdaoffpeakend', 'wapdaoffpeakused')"
+                        onchange="sumFields3('wapdapeakend', 'wapdaoffpeakend', 'wapdatotalend')">
                     <input type="number" required min="0" step="0.01" id="wapdatotalend"
                         name="Wapda Reading End of the Day Total (KWH)" required placeholder="Total (KWH)"
                         tabindex="-1">
@@ -124,13 +124,13 @@
 
                         <label for="RSD" class="label">Total Used:</label>
                         <div class="RSD">
-                            <input type="number" required min="0" step="0.01" id="gen1unittotal"
+                            <input type="number" required min="0" id="gen1unittotal"
                                 name="Generator 1 Total Used Units (KWH)" required placeholder="Total Used Units (KWH)"
                                 tabindex="-1" readonly>
-                            <input type="number" required min="0" step="0.01" id="gen1dieseltotal"
+                            <input type="number" required min="0" id="gen1dieseltotal"
                                 name="Generator 1 Total Used Diesel (KWH)" required
                                 placeholder="Total Used Diesel (KWH)" tabindex="-1" readonly>
-                            <input type="number" required min="0" step="0.01" id="gen1durationtotal"
+                            <input type="number" required min="0" id="gen1durationtotal"
                                 name="Generator 1 Total Duration (RHs)" required
                                 placeholder="Generator 1 Total Duration (RHs)" tabindex="-1" readonly>
                         </div>
@@ -171,17 +171,17 @@
 
                                 <label>Total Used:</label>
                                 <div class="RSD">
-                                    <input type="number" min="0" step="0.01" id="gen3unitstotal"
+                                    <input type="number" min="0" step="0.00" id="gen3unitstotal"
                                         name="Generator 3 Total Used Units (KWH)"
                                         placeholder="Generator 3 Total Used Units (KWH)" required readonly
                                         tabindex="-1">
 
-                                    <input type="number" min="0" step="0.01" id="gen3dieseltotal"
+                                    <input type="number" min="0" step="0.00" id="gen3dieseltotal"
                                         name="Generator 3 Total Used Diesel (LTR)"
                                         placeholder="Generator 3 Total Used Diesel (LTR)" required readonly
                                         tabindex="-1">
 
-                                    <input type="number" min="0" step="0.01" id="gen3usedtotal"
+                                    <input type="number" min="0" step="0.00" id="gen3usedtotal"
                                         name="Generator 3 Total Duration (RHS)"
                                         placeholder="Generator 3 Total Duration (RHS)" required readonly tabindex="-1">
                                 </div>
@@ -435,40 +435,30 @@
         function sumFields(input1Id, input2Id, resultId) {
             const field1Value = parseFloat(document.getElementById(input1Id).value) || 0;
             const field2Value = parseFloat(document.getElementById(input2Id).value) || 0;
-            const sum = field1Value + field2Value;
+            const sum = field2Value - field1Value;
             document.getElementById(resultId).value = sum;
             // addTotal();
             // addTotalGen1();
             // addTotalGen3();
         }
-        // function sumFields3(input1Id, input2Id, resultId) {
-        //     const field1Value = parseFloat(document.getElementById(input1Id).value) || 0;
-        //     const field2Value = parseFloat(document.getElementById(input2Id).value) || 0;
-        //     const sum = field2Value - field1Value;
-        //     document.getElementById(resultId).value = sum;
-        //     addTotal();
-        //     addTotalGen1();
-        //     addTotalGen3();
-        // }
+        function sumFields3(input1Id, input2Id, resultId) {
+            const field1Value = parseFloat(document.getElementById(input1Id).value) || 0;
+            const field2Value = parseFloat(document.getElementById(input2Id).value) || 0;
+            const sum = field1Value + field2Value;
+            document.getElementById(resultId).value = sum;
+            addTotal();
 
-        // function addTotal() {
-        //     const startDayTotal = parseFloat(document.getElementById('wapdatotal').value) || 0;
-        //     const endDayTotal = parseFloat(document.getElementById('wapdatotalend').value) || 0;
-        //     totalused = endDayTotal - startDayTotal;
-        //     document.getElementById('wapdapeakoffpeaktotalused').value = totalused;
-        // }
-        // function addTotalGen1() {
-        //     const startDayTotal = parseFloat(document.getElementById('gen1duration').value) || 0;
-        //     const endDayTotal = parseFloat(document.getElementById('gen1durationend').value) || 0;
-        //     totalused = endDayTotal - startDayTotal;
-        //     document.getElementById('gen1durationtotal').value = totalused;
-        // }
-        // function addTotalGen3() {
-        //     const startDayTotal = parseFloat(document.getElementById('gen3duration').value) || 0;
-        //     const endDayTotal = parseFloat(document.getElementById('gen3durationend').value) || 0;
-        //     totalused = endDayTotal - startDayTotal;
-        //     document.getElementById('gen3usedtotal').value = totalused;
-        // }
+        }
+
+        function addTotal() {
+            const startDayTotal = parseFloat(document.getElementById('wapdatotal').value) || 0;
+            const endDayTotal = parseFloat(document.getElementById('wapdatotalend').value) || 0;
+            totalused = endDayTotal - startDayTotal;
+            document.getElementById('wapdapeakoffpeaktotalused').value = totalused;
+        }
+       
+
+        
     </script>
 
 
