@@ -136,7 +136,48 @@
                                 placeholder="Generator 1 Total Duration (RHs)" tabindex="-1" readonly>
                         </div>
                         <!-- end of Generator 1 -->
-
+                        <!-- start of Generator2 -->
+                        <div class="sections">
+                            <h2>For Generator 2</h1>
+                                <label for="RSD">Reading at the start of the Day:</label>
+                                <div class="RSD">
+                                    <input type="number" id="gen1Units" name="Generator 2 Start of the Day UNITS (KWH)" required
+                                        placeholder="Please enter Units (KWH)" min="0" step="0.01"
+                                        oninput="sumFields('gen1Units', 'gen1Unitsend', 'gen1unittotal')">
+                                    <input type="number" id="gen1diesel" name="Generator 2 Start of the Day DIESEL (LTR)"
+                                        required placeholder="Please enter Diesel (LTR)" min="0" step="0.01"
+                                        oninput="sumFields('gen1diesel', 'gen1dieselend', 'gen1dieseltotal')">
+                                    <input type="number" id="gen1duration" name="Generator 2 Start of the Day DURATION (RHs)"
+                                        required placeholder="Please enter Duration (RHs)" min="0" step="0.01"
+                                        oninput="sumFields('gen1duration', 'gen1durationend', 'gen1durationtotal')">
+                                </div>
+        
+                                <label for="RSD">Reading at the End of the Day:</label>
+                                <div class="RSD">
+                                    <input type="number" id="gen1Unitsend" name="Generator 2 End of the Day UNITS (KWH)"
+                                        required placeholder="Please enter Units (KWH)" min="0" step="0.01"
+                                        oninput="sumFields('gen1Units', 'gen1Unitsend', 'gen1unittotal')">
+                                    <input type="number" id="gen1dieselend" name="Generator 2 End of the Day DIESEL (LTR)"
+                                        required placeholder="Please enter Diesel (LTR)" min="0" step="0.01"
+                                        oninput="sumFields('gen1diesel', 'gen1dieselend', 'gen1dieseltotal')">
+                                    <input type="number" id="gen1durationend" name="Generator 2 End of the Day DURATION (RHs)"
+                                        required placeholder="Please enter Duration (RHs)" min="0" step="0.01"
+                                        oninput="sumFields('gen1duration', 'gen1durationend', 'gen1durationtotal')">
+                                </div>
+        
+                                <label for="RSD" class="label">Total Used:</label>
+                                <div class="RSD">
+                                    <input type="number" required min="0" id="gen1unittotal"
+                                        name="Generator 2 Total Used Units (KWH)" required placeholder="Total Used Units (KWH)"
+                                        tabindex="-1" readonly>
+                                    <input type="number" required min="0" id="gen1dieseltotal"
+                                        name="Generator 2 Total Used Diesel (KWH)" required
+                                        placeholder="Total Used Diesel (KWH)" tabindex="-1" readonly>
+                                    <input type="number" required min="0" id="gen1durationtotal"
+                                        name="Generator 2 Total Duration (RHs)" required
+                                        placeholder="Generator 2 Total Duration (RHs)" tabindex="-1" readonly>
+                                </div>
+                        <!-- end of Generator2 -->
                         <!-- Generator 3 -->
                         <div class="sections">
                             <h2>For Generator 3</h1>
@@ -486,6 +527,7 @@
         //     });
         // });
     </script>
+  
 
 
 </body>
