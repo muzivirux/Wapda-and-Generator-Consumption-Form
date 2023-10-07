@@ -84,11 +84,16 @@
                         tabindex="-1">
 
                 </div>
+
                 <!-- wapda availibility duration time -->
                 <label class="label">wapda availibility duration time</label>
-
                 <input type="text" id="availability-duration" name="wapda availibility duration time"
                     placeholder="HH:MM" class="time-input" required>
+
+                    <label class="label">Remarks</label>
+                <input type="text" id="availability-duration" name="Remarks for Wapda1"
+                    placeholder="Remarks"  required>
+
 
 
                 <!-- End of wapda -->
@@ -135,6 +140,10 @@
                                 name="Generator 1 Total Duration (RHs)" required
                                 placeholder="Generator 1 Total Duration (RHs)" tabindex="-1" readonly>
                         </div>
+                         <label class="label">Remarks</label>
+                <input type="text" id="availability-duration" name="Remarks for  Generator1"
+                    placeholder="Remarks"  required>
+
                         <!-- end of Generator 1 -->
                         <!-- start of Generator2 -->
                         <div class="sections">
@@ -177,6 +186,10 @@
                                         name="Generator 2 Total Duration (RHs)" required
                                         placeholder="Generator 2 Total Duration (RHs)" tabindex="-1" readonly>
                                 </div>
+                                 <label class="label">Remarks</label>
+                <input type="text" id="availability-duration" name="Remarks for Generator2"
+                    placeholder="Remarks"  required>
+
                         <!-- end of Generator2 -->
                         <!-- Generator 3 -->
                         <div class="sections">
@@ -227,17 +240,21 @@
                                         name="Generator 3 Total Duration (RHS)"
                                         placeholder="Generator 3 Total Duration (RHS)" required readonly tabindex="-1">
                                 </div>
+                                 <label class="label">Remarks</label>
+                <input type="text" id="availability-duration" name="Remarks for Generator3"
+                    placeholder="Remarks"  required>
+
 
                                 <!-- End of Generator 3  ^([01]?[0-9]|2[0-3]):[0-5][0-9]$-->
 
-                                <div class="sections">
+                                
                                     <label for="poweruseagri">Power use from Agri store:</label>
                                     <input type="text" class="time-input" id="powerUseAgri"
                                         name="Power Use from Agri store" placeholder="HH:MM" required>
                                     <label for=" poweruseagri">Running load amp:</label>
                                     <input type="number" min="0" id="runningLoad" name="Running load amp"
                                         placeholder="Running load amp" required>
-                                </div>
+                       
 
 
                                 <div class="sections">
